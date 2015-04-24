@@ -8,8 +8,12 @@ public class SimpleTicketTest {
 
 	@Test
 	public void testIsUsable() {
-		SimpleTicket st = new SimpleTicket(1, 1);
+		SimpleTicket st = SimpleTicket.create(1, 1);
 		assertTrue("Ticket should be usable", st.isUsable());
+		st.stamp(4711, 1);
+		assertFalse("Ticket should no longer be usable", st.isUsable());
+		st.stamp(5000, 2);
+		assertFalse("Ticket should remain unusable", st.isUsable());
 	}
 
 	@Test
