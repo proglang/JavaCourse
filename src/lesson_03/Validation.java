@@ -4,9 +4,9 @@ import lesson_02.FareZone;
 
 public class Validation {
 
-	private long timestamp; // Zeitstempel der Entwertung (in Millisekunden seit 1.1.1970)
+	private final long timestamp; // Zeitstempel der Entwertung (in Millisekunden seit 1.1.1970)
 
-	private FareZone zone; // new: Ort der Entwertung: ZONE_A, ZONE_B, ZONE_C
+	private final FareZone zone; // new: Ort der Entwertung: ZONE_A, ZONE_B, ZONE_C
 
 	public Validation(long timestamp, FareZone zone) {
 		this.timestamp = timestamp;
@@ -17,7 +17,7 @@ public class Validation {
 		return t - timestamp;
 	}
 
-	public int levelDiff(FareZone z) {
+	public int levelDifference(FareZone z) {
 		return Math.abs(zone.ordinal() - z.ordinal());
 	}
 

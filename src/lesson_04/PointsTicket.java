@@ -42,7 +42,7 @@ public class PointsTicket extends ATicket {
 				return false;
 			}
 			result = result && (lastValidation.timeSinceCreated(t) <= level * Tickets.MILLISECONDS_PER_HOUR);
-			result = result && (lastValidation.levelDiff(z) < level);
+			result = result && (lastValidation.levelDifference(z) < level);
 		}
 		return result;
 	}

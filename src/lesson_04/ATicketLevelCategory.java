@@ -29,7 +29,7 @@ public class ATicketLevelCategory extends ATicket {
 		if (result) {
 			Validation currentValidation = validation[nr_of_stamps - 1];
 			result = result && (currentValidation.timeSinceCreated(t) <= level * Tickets.MILLISECONDS_PER_HOUR);
-			result = result && (currentValidation.levelDiff(z) < level);
+			result = result && (currentValidation.levelDifference(z) < level);
 		}
 		return result;
 	}
