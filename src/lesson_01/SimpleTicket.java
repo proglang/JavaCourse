@@ -15,7 +15,7 @@ public class SimpleTicket {
 	 * @param level
 	 * @param category
 	 */
-	public SimpleTicket(int level, int category) {
+	private SimpleTicket(int level, int category) {
 		this.level = level;
 		this.category = category;
 	}
