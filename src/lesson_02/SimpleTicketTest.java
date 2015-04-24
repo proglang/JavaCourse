@@ -8,32 +8,9 @@ import org.junit.Test;
 public class SimpleTicketTest {
 
 	@Test
-	public void testSimpleTicket() {
-		SimpleTicket st;
-		st = new SimpleTicket(Tickets.LEVEL1, TicketCategory.CHILD);
-		st = new SimpleTicket(Tickets.LEVEL2, TicketCategory.CHILD);
-		st = new SimpleTicket(Tickets.LEVEL3, TicketCategory.CHILD);
-		st = new SimpleTicket(Tickets.LEVEL1, TicketCategory.ADULT);
-		st = new SimpleTicket(Tickets.LEVEL2, TicketCategory.ADULT);
-		st = new SimpleTicket(Tickets.LEVEL3, TicketCategory.ADULT);
-		try {
-			st = new SimpleTicket(0, TicketCategory.ADULT);
-			assertTrue(false);
-		} catch (Exception e) {
-			// correct behavior	
-		}
-		try {
-			st = new SimpleTicket(42, TicketCategory.ADULT);
-			assertTrue(false);
-		} catch (Exception e) {
-			// correct behavior	
-		}
-	}
-
-	@Test
 	public void testUsable() {
 		SimpleTicket st;
-		st = new SimpleTicket(Tickets.LEVEL1, TicketCategory.ADULT);
+		st = new SimpleTicket(PriceLevel.LEVEL_1, TicketCategory.ADULT);
 		assertTrue(st.isUsable());
 		st.stamp(4711, FareZone.ZONE_A);
 		assertFalse(st.isUsable());
@@ -44,7 +21,7 @@ public class SimpleTicketTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testStamp() {
 		SimpleTicket st;
-		st = new SimpleTicket(Tickets.LEVEL1, TicketCategory.ADULT);
+		st = new SimpleTicket(PriceLevel.LEVEL_1, TicketCategory.ADULT);
 		st.stamp(0, FareZone.ZONE_A);
 	}
 
