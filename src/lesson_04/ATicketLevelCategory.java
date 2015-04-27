@@ -1,22 +1,20 @@
 package lesson_04;
 
 import lesson_02.FareZone;
+import lesson_02.PriceLevel;
 import lesson_02.TicketCategory;
 import lesson_02.Tickets;
 import lesson_03.Validation;
 
 public class ATicketLevelCategory extends ATicket {
-	private int level; // Preisstufe 1, 2, 3
+	private PriceLevel level; // Preisstufe 1, 2, 3
 
 	private TicketCategory category; // new: Kind = CHILD, Erwachsener = ADULT
 
-	protected ATicketLevelCategory(int level, TicketCategory category, int max_stamps) {
-		super(max_stamps);
-		if (level != Tickets.LEVEL1 && level != Tickets.LEVEL2 && level != Tickets.LEVEL3) {
-			throw new IllegalArgumentException("Level should be 1, 2, 3");
-		}
-		if (max_stamps < 1) {
-			throw new IllegalArgumentException("max_rides must be at least 1");
+	protected ATicketLevelCategory(PriceLevel level, TicketCategory category, int maxStamps) {
+		super(maxStamps);
+		if (maxStamps < 1) {
+			throw new IllegalArgumentException("maxStamps must be at least 1");
 		}
 		this.level = level;
 		this.category = category;
@@ -25,11 +23,11 @@ public class ATicketLevelCategory extends ATicket {
 
 	@Override
 	public boolean validate(TicketCategory c, long t, FareZone z) {
-		boolean result = (nr_of_stamps > 0) && (nr_of_stamps <= max_stamps);
+		boolean result = (nrOfStamps > 0) && (nrOfStamps <= maxStamps);
 		if (result) {
-			Validation currentValidation = validation[nr_of_stamps - 1];
-			result = result && (currentValidation.timeSinceCreated(t) <= level * Tickets.MILLISECONDS_PER_HOUR);
-			result = result && (currentValidation.levelDifference(z) < level);
+			Validation currentValidation = validation[nrOfStamps - 1];
+			result = result && (currentValidation.timeSinceCreated(t) <= level.getLevel() * Tickets.MILLISECONDS_PER_HOUR);
+			result = result && (currentValidation.levelDifference(z) < level.getLevel());
 		}
 		return result;
 	}

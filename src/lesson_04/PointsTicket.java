@@ -27,9 +27,9 @@ public class PointsTicket extends ATicket {
 
 	@Override
 	public boolean validate(TicketCategory c, long t, FareZone z) {
-		boolean result = this.nr_of_stamps > 0 && this.nr_of_stamps <= MAX_STAMPS;
+		boolean result = this.nrOfStamps > 0 && this.nrOfStamps <= MAX_STAMPS;
 		if (result) {
-			Validation lastValidation = validation[this.nr_of_stamps - 1];
+			Validation lastValidation = validation[this.nrOfStamps - 1];
 			int count = countValidations(lastValidation);
 			int level;
 			if (count >= Tickets.STAMPS_FOR_LEVEL3) {
@@ -49,8 +49,8 @@ public class PointsTicket extends ATicket {
 
 	private int countValidations(Validation lastValidation) {
 		int count = 0;
-		if (this.nr_of_stamps <= MAX_STAMPS) {
-			for (int i = this.nr_of_stamps - 1; i >= 0; i--) {
+		if (this.nrOfStamps <= MAX_STAMPS) {
+			for (int i = this.nrOfStamps - 1; i >= 0; i--) {
 				if (lastValidation.equals(validation[i])) {
 					count++;
 				} else {
