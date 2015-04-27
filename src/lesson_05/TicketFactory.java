@@ -1,6 +1,7 @@
 package lesson_05;
 
 import lesson_02.ITicket;
+import lesson_02.PriceLevel;
 import lesson_02.TicketCategory;
 import lesson_04.PointsTicket;
 import lesson_04.SimpleTicket;
@@ -36,18 +37,18 @@ public class TicketFactory {
 	}
 	private static abstract class AOrder implements IOrder {
 
-		protected int level;
+		protected PriceLevel level;
 		protected TicketCategory category;
-		protected AOrder(int level, TicketCategory category) {
-			this.level = level;
+		protected AOrder(PriceLevel level2, TicketCategory category) {
+			this.level = level2;
 			this.category = category;
 		}
 		protected boolean checkPrice(int price, int[] priceForChild, int[] priceForAdult) {
 			switch(category) {
 			case CHILD:
-				return priceForChild[level] == price;
+				return priceForChild[level.getLevel()] == price;
 			case ADULT:
-				return priceForAdult[level] == price;
+				return priceForAdult[level.getLevel()] == price;
 			default:
 				throw new AssertionError("Illegal ticket category");
 			}
@@ -55,7 +56,7 @@ public class TicketFactory {
 		
 	}
 	private static class Simple extends AOrder {
-		public Simple(int level, TicketCategory category) {
+		public Simple(PriceLevel level, TicketCategory category) {
 			super(level, category);
 		}
 		@Override
@@ -67,7 +68,7 @@ public class TicketFactory {
 		}
 	}
 	private static class TwoTimesFour extends AOrder {
-		public TwoTimesFour(int level, TicketCategory category) {
+		public TwoTimesFour(PriceLevel level, TicketCategory category) {
 			super(level, category);
 		}
 		@Override
@@ -79,11 +80,11 @@ public class TicketFactory {
 		}
 	}
 	
-	public static ITicket makeSimple(int price, int level, TicketCategory category) {
+	public static ITicket makeSimple(int price, PriceLevel level, TicketCategory category) {
 		return new Simple(level, category).make(price);
 	}
 
-	public static ITicket makeTwoTimesFour(int price, int level, TicketCategory category) {
+	public static ITicket makeTwoTimesFour(int price, PriceLevel level, TicketCategory category) {
 		return new TwoTimesFour(level, category).make(price);
 	}
 	

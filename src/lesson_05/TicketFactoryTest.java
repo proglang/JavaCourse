@@ -3,6 +3,7 @@ package lesson_05;
 import static org.junit.Assert.*;
 import lesson_02.FareZone;
 import lesson_02.ITicket;
+import lesson_02.PriceLevel;
 import lesson_02.TicketCategory;
 import lesson_02.Tickets;
 
@@ -13,7 +14,7 @@ public class TicketFactoryTest {
 	@Test
 	public void testMakeSimple() {
 		ITicket ticket;
-		ticket = TicketFactory.makeSimple(130, Tickets.LEVEL1, TicketCategory.CHILD);
+		ticket = TicketFactory.makeSimple(130, PriceLevel.LEVEL_1, TicketCategory.CHILD);
 		firstUse(ticket);
 		assertFalse("Ticket should no longer be usable", 
 				ticket.isUsable());
@@ -44,7 +45,7 @@ public class TicketFactoryTest {
 	@Test
 	public void testMakeTwoTimesFour() {
 		ITicket ticket;
-		ticket = TicketFactory.makeTwoTimesFour(910, Tickets.LEVEL1, TicketCategory.CHILD);
+		ticket = TicketFactory.makeTwoTimesFour(910, PriceLevel.LEVEL_1, TicketCategory.CHILD);
 		firstUse(ticket);
 		for (int j = 1; j < 8; j++) {
 			nextUse(ticket, (Tickets.MILLISECONDS_PER_HOUR + 5000) * j);
