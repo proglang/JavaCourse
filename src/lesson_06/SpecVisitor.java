@@ -1,6 +1,6 @@
 package lesson_06;
 
-public class SpecVisitor implements ExprVisitor<Either<Integer,IExpr>> {
+public class SpecVisitor implements IExprVisitor<Either<Integer,IExpr>> {
 
 	@Override
 	public Either<Integer, IExpr> visitVar(String name) {

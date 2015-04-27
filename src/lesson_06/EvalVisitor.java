@@ -2,7 +2,7 @@ package lesson_06;
 
 import java.util.Map;
 
-public class EvalVisitor implements ExprVisitor<Integer> {
+public class EvalVisitor implements IExprVisitor<Integer> {
 	private Map<String,Integer> environment;
 
 	@Override

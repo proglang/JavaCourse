@@ -28,7 +28,7 @@ public class Binary implements IExpr {
 	}
 	
 	@Override
-	public <R> R accept(ExprVisitor<R> v) {
+	public <R> R accept(IExprVisitor<R> v) {
 		return v.visitBinary(binop, left, right);
 	}
 	

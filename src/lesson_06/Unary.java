@@ -18,7 +18,7 @@ public class Unary implements IExpr {
 		}
 	}
 	@Override
-	public <R> R accept(ExprVisitor<R> v) {
+	public <R> R accept(IExprVisitor<R> v) {
 		return v.visitUnary(unop, expr);
 	}
 	@Override
