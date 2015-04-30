@@ -1,7 +1,7 @@
 package lesson_04;
 
 import lesson_02.FareZone;
-import lesson_02.ITicket;
+import lesson_02.PriceLevel;
 import lesson_02.TicketCategory;
 import lesson_02.Tickets;
 import lesson_03.Validation;
@@ -27,34 +27,32 @@ public class PointsTicket extends ATicket {
 
 	@Override
 	public boolean validate(TicketCategory c, long t, FareZone z) {
-		boolean result = this.nrOfStamps > 0 && this.nrOfStamps <= MAX_STAMPS;
+		boolean result = this.stamps.size() <= MAX_STAMPS;
 		if (result) {
-			Validation lastValidation = validation[this.nrOfStamps - 1];
+			Validation lastValidation = stamps.get(stamps.size()-1);
 			int count = countValidations(lastValidation);
-			int level;
+			PriceLevel level;
 			if (count >= Tickets.STAMPS_FOR_LEVEL3) {
-				level = Tickets.LEVEL3;
+				level = PriceLevel.LEVEL_3;
 			} else if (count >= Tickets.STAMPS_FOR_LEVEL2) {
-				level = Tickets.LEVEL2;
+				level = PriceLevel.LEVEL_2;
 			} else if (count >= Tickets.STAMPS_FOR_LEVEL1) {
-				level = Tickets.LEVEL1;
+				level = PriceLevel.LEVEL_1;
 			} else {
 				return false;
 			}
-			result = result && (lastValidation.timeSinceCreated(t) <= level * Tickets.MILLISECONDS_PER_HOUR);
-			result = result && (lastValidation.levelDifference(z) < level);
+			result = result && (lastValidation.timeSinceCreated(t) <= level.getLevel() * Tickets.MILLISECONDS_PER_HOUR);
+			result = result && (lastValidation.levelDifference(z) < level.getLevel());
 		}
 		return result;
 	}
 
 	private int countValidations(Validation lastValidation) {
 		int count = 0;
-		if (this.nrOfStamps <= MAX_STAMPS) {
-			for (int i = this.nrOfStamps - 1; i >= 0; i--) {
-				if (lastValidation.equals(validation[i])) {
+		if (this.stamps.size() <= MAX_STAMPS) {
+			for (Validation stamp : this.stamps) {
+				if (lastValidation.equals(stamp)) {
 					count++;
-				} else {
-					break;
 				}
 			}
 		}

@@ -14,20 +14,20 @@ public class ATicketLevelCategory extends ATicket {
 	protected ATicketLevelCategory(PriceLevel level, TicketCategory category, int maxStamps) {
 		super(maxStamps);
 		if (maxStamps < 1) {
-			throw new IllegalArgumentException("maxStamps must be at least 1");
+			throw new IllegalArgumentException("maxStamps must be greater than zero");
 		}
 		this.level = level;
 		this.category = category;
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public boolean validate(TicketCategory c, long t, FareZone z) {
-		boolean result = (nrOfStamps > 0) && (nrOfStamps <= maxStamps);
+		boolean result = (stamps.size() <= maxStamps);
+		result = result && (c.ordinal() <= category.ordinal()); // Adult with child's ticket?
 		if (result) {
-			Validation currentValidation = validation[nrOfStamps - 1];
-			result = result && (currentValidation.timeSinceCreated(t) <= level.getLevel() * Tickets.MILLISECONDS_PER_HOUR);
-			result = result && (currentValidation.levelDifference(z) < level.getLevel());
+			Validation lastStamp = stamps.get(stamps.size()-1); 
+			result = result && (lastStamp.timeSinceCreated(t) <= level.getLevel() * Tickets.MILLISECONDS_PER_HOUR);
+			result = result && (lastStamp.levelDifference(z) < level.getLevel());
 		}
 		return result;
 	}
