@@ -11,15 +11,18 @@ import lesson_03.Validation;
 public abstract class ATicket implements ITicket {
 	private String id; // Nummer des Fahrscheins
 	
-	protected List<Validation> stamps;
+	protected final List<Validation> stamps;
 	
-	protected int maxStamps;
+	protected final int maxStamps;
 
 	/**
 	 * Create a new ticket given its price level and category.
 	 * @param level must be one of LEVEL1, LEVEL2, or LEVEL3
 	 */
 	protected ATicket(int maxStamps) {
+		if (maxStamps < 1) {
+			throw new IllegalArgumentException("maxStamps must be greater than zero");
+		}
 		this.maxStamps = maxStamps;
 		this.stamps = new LinkedList<Validation>();
 	}
