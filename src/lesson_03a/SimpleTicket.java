@@ -20,7 +20,7 @@ public class SimpleTicket implements ITicket {
 	// representation of validation stamp
 	private final List<Validation> stamps; 
 	
-	private static final int MAX_RIDES = 1;
+	private final int maxNrOfStamps;
 
 	/**
 	 * Create a new ticket given its price level and category.
@@ -30,6 +30,7 @@ public class SimpleTicket implements ITicket {
 	public SimpleTicket(PriceLevel level, TicketCategory category) {
 		this.level = level;
 		this.category = category;
+		this.maxNrOfStamps = 1;
 		this.stamps = new LinkedList<Validation>();
 	}
 
@@ -37,7 +38,7 @@ public class SimpleTicket implements ITicket {
 	 * @return true if the ticket can still be used
 	 */
 	public boolean isUsable() {
-		return stamps.size() < MAX_RIDES;
+		return stamps.size() < maxNrOfStamps;
 	}
 
 	/**
