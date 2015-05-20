@@ -27,8 +27,7 @@ public class Troll extends AMonster {
 	 */
 	public boolean hit(int force) {
 		System.out.println("Ouch!");
-		this.hp -= force;
-		boolean stayingAlive = this.hp > 0;
+		boolean stayingAlive = super.hit(force);
 		if (!stayingAlive) {
 			System.out.println("You slayed me, but my friends will avenge me!!!");
 		}

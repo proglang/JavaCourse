@@ -12,11 +12,7 @@ public class Dragon extends AMonster {
 		}
 		return new Dragon(hp);
 	}
-	
-	public boolean hit(int force) {
-		return false;
-	}
-	
+		
 	public void breatheFire() {
 		System.out.println(">>>>>>>>>======-----");
 	}
