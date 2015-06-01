@@ -1,11 +1,8 @@
 package lesson_07;
 
-import lesson_06.Binary;
 import lesson_06.Binop;
-import lesson_06.Const;
 import lesson_06.IExpr;
 import lesson_06.ParserBase;
-import lesson_06.Var;
 
 public class Parser extends ParserBase {
 	private IExprFactory b;
