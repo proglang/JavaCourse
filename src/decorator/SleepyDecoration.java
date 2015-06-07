@@ -2,7 +2,7 @@ package decorator;
 
 public class SleepyDecoration extends AMonsterDecoration {
 
-	protected SleepyDecoration(IMonsterInternal monster) {
+	protected SleepyDecoration(AMonster monster) {
 		super(monster);
 	}
 

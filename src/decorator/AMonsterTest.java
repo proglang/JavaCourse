@@ -8,9 +8,9 @@ public class AMonsterTest {
 
 	@Test
 	public void testHit() {
-		IMonsterInternal m = new Troll();
+		AMonster m = new Troll();
 		m.hit(10);
-		IMonsterInternal d = new Dragon();
+		AMonster d = new Dragon();
 		d.hit(10);
 		m = new CursedDecoration(m);
 		m.hit(10);
@@ -22,13 +22,13 @@ public class AMonsterTest {
 
 	@Test
 	public void testName() {
-		assertEquals("Troll", "Troll", new Troll().name());
-		assertEquals("Dragon", "Dragon", new Dragon().name());
-		IMonsterInternal m = new Troll();
-		IMonsterInternal mc = new CursedDecoration(m);
-		IMonsterInternal mi = new InvisibleDecoration(m);
-		IMonsterInternal mci = new InvisibleDecoration(mc);
-		IMonsterInternal mic = new CursedDecoration(mi);
+		assertEquals("troll", "troll", new Troll().name());
+		assertEquals("dragon", "dragon", new Dragon().name());
+		AMonster m = new Troll();
+		AMonster mc = new CursedDecoration(m);
+		AMonster mi = new InvisibleDecoration(m);
+		AMonster mci = new InvisibleDecoration(mc);
+		AMonster mic = new CursedDecoration(mi);
 	}
 
 }

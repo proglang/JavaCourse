@@ -1,6 +1,6 @@
 package decorator;
 
-public class Troll extends AMonster {
+public class Troll extends AMonsterObject {
 
 	@Override
 	public String name() {

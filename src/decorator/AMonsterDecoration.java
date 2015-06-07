@@ -1,24 +1,19 @@
 package decorator;
 
-public abstract class AMonsterDecoration implements IMonsterInternal {
-	private final IMonsterInternal monster;
+public abstract class AMonsterDecoration extends AMonster {
+	private final AMonster previous;
 	
-	protected AMonsterDecoration(IMonsterInternal monster) {
-		this.monster = monster;
-	}
-
-	@Override
-	public boolean hit(int force) {
-		return monster.hit(force, this);
+	protected AMonsterDecoration(AMonster monster) {
+		this.previous = monster;
 	}
 
 	@Override
 	public String name() {
-		return monster.name();
+		return previous.name();
 	}
 	@Override
-	public boolean hit(int force, IMonster target) {
-		return monster.hit(force, target);
+	public boolean hit(int force, AMonster target) {
+		return previous.hit(force, target);
 	}
 
 }

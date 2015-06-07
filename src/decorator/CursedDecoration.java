@@ -2,7 +2,7 @@ package decorator;
 
 public class CursedDecoration extends AMonsterDecoration {
 
-	protected CursedDecoration(IMonsterInternal monster) {
+	protected CursedDecoration(AMonster monster) {
 		super(monster);
 	}
 

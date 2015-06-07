@@ -2,7 +2,7 @@ package decorator;
 
 public class InvisibleDecoration extends AMonsterDecoration {
 
-	protected InvisibleDecoration(IMonsterInternal monster) {
+	protected InvisibleDecoration(AMonster monster) {
 		super(monster);
 	}
 
