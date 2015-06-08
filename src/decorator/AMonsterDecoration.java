@@ -6,6 +6,10 @@ public abstract class AMonsterDecoration extends AMonster {
 	protected AMonsterDecoration(AMonster monster) {
 		this.previous = monster;
 	}
+	
+	public boolean hitOld(int force) {
+		return previous.hitOld(force);
+	}
 
 	@Override
 	public String name() {

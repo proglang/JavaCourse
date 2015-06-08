@@ -25,10 +25,18 @@ public class AMonsterTest {
 		assertEquals("troll", "troll", new Troll().name());
 		assertEquals("dragon", "dragon", new Dragon().name());
 		AMonster m = new Troll();
+		System.out.println(m.name());
 		AMonster mc = new CursedDecoration(m);
+		System.out.println(mc.name());
+		AMonster d = new Dragon();
+		System.out.println(d.name());
+		AMonster dc = new CursedDecoration(d);
+		System.out.println(dc.name());
 		AMonster mi = new InvisibleDecoration(m);
+		System.out.println(mi.name());
 		AMonster mci = new InvisibleDecoration(mc);
 		AMonster mic = new CursedDecoration(mi);
+		System.out.println(mic.name());
 	}
 
 }
