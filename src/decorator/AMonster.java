@@ -7,9 +7,12 @@ public abstract class AMonster implements IMonster {
 		return hit(force, this);
 	}
 	
-	protected abstract boolean hit(int force, AMonster entry);
-
 	@Override
 	public abstract String name();
+
+	protected boolean hit(int force, AMonster target) {
+		System.out.println("You hit the " + target.name() + "!");
+		return true;
+	}
 
 }

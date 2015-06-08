@@ -1,6 +1,6 @@
 package decorator;
 
-public class Dragon extends AMonsterObject {
+public class Dragon extends AMonster {
 
 	@Override
 	public String name() {
