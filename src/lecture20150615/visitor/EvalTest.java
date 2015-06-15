@@ -2,6 +2,8 @@ package lecture20150615.visitor;
 
 import static org.junit.Assert.assertEquals;
 
+import static lecture20150615.visitor.Expressions.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,16 +12,16 @@ import org.junit.Test;
 public class EvalTest {
 	
 	
-	IExpr e_noVar = new Product(new Const(4), new Add(new Const(42), new Const(8)));
-	IExpr e_var = new Product(new Var("x"), new Add(new Const(42), new Var("y")));
+	IExpr e_noVar = product(4, add(42, 8));
+	IExpr e_var = product(var("x"), add(42, var("y")));
 	
 	@Test
-	public void noVar() {
+	public void testNoVar() {
 		assertEquals(200, (int)e_noVar.accept(new Eval(null)));
 	}
 	
 	@Test
-	public void var() {
+	public void testVar() {
 		Map<String, Integer> env = new HashMap<>();
 		env.put("x", 4);
 		env.put("y", 8);
