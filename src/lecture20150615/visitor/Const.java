@@ -16,6 +16,11 @@ public class Const implements IExpr {
 	}
 
 	@Override
+	public String toString() {
+		return value + "";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
