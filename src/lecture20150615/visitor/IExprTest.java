@@ -16,10 +16,10 @@ public class IExprTest {
 		checkToString("((2 * 3) + 4)", add(product(cnst(2),cnst(3)), cnst(4)));
 	}
 
-	private void checkToString(String x, IExpr e) {
+	private void checkToString(String expected, IExpr e) {
 		String r = e.toString();
 		System.out.println("'" + r + "'");
-		assertEquals(x, r);
+		assertEquals(expected, r);
 	}
 
 	public void testParse() {
