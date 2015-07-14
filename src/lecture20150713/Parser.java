@@ -1,7 +1,6 @@
 package lecture20150713;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import lecture20150615.visitor.IExpr;

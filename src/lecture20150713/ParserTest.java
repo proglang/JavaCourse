@@ -4,8 +4,6 @@ import static lecture20150615.visitor.Expressions.*;
 import static lecture20150713.Statements.*;
 import static org.junit.Assert.*;
 
-import java.util.Arrays;
-
 import lecture20150622.StringScanner;
 
 import org.junit.Test;

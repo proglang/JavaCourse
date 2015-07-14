@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import jdk.nashorn.internal.objects.annotations.Setter;
-
 import org.junit.Before;
 import org.junit.Test;
 
