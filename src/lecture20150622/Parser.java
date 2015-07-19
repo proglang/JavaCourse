@@ -17,10 +17,10 @@ public class Parser {
 		this.scan = scan;
 	}
 	
-	private boolean lookingAt(String regex) {
+	protected boolean lookingAt(String regex) {
 		return scan.lookingAt(regex);
 	}
-	private String getLexeme(String regex) {
+	protected String getLexeme(String regex) {
 		return scan.getLexeme(regex);
 	}
 	

@@ -24,7 +24,18 @@ public class ParserTest {
 		expected = if_st(var("x"), seq(), seq());
 		runParser(input, expected);
 		
+		input = "while(x) {}";
+		expected = while_st(var("x"), seq());
+		runParser(input, expected);
 		
+		input = "{x=1; y=2;}";
+		expected = seq(assign("x", cnst(1)), assign("y", cnst(2)));
+		runParser(input, expected);
+		
+		input = "while(b) b = b + 1";
+		expected = while_st(var("b"), assign("b", add(var("b"), 1)));
+		runParser(input, expected);
+				
 	}
 
 	private void runParser(String input, IStmt expected) {
