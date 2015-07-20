@@ -60,4 +60,9 @@ public class If implements IStmt {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "If [condition=" + condition + ", trueBranch=" + trueBranch
+				+ ", falseBranch=" + falseBranch + "]";
+	}
 }

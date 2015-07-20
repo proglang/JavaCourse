@@ -7,13 +7,13 @@ import lecture20150615.visitor.IExpr;
 import lecture20150622.IScanner;
 
 public class Parser extends lecture20150622.Parser {
-	private static final String REGEX_SEMICOLON = ";";
+	protected static final String REGEX_SEMICOLON = ";";
 	private static final String REGEX_CLOSE_BRACE = "\\}";
 	private static final String REGEX_EQUALS = "=";
-	private static final String REGEX_CLOSE_PAREN = "\\)";
-	private static final String REGEX_OPEN_PAREN = "\\(";
+	protected static final String REGEX_CLOSE_PAREN = "\\)";
+	protected static final String REGEX_OPEN_PAREN = "\\(";
 	private static final String REGEX_OPEN_BRACE = "\\{";
-	private static final String REGEX_WORD = "[A-Za-z]+";
+	protected static final String REGEX_WORD = "[A-Za-z]+";
 
 	public Parser(IScanner scan) {
 		super(scan);

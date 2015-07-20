@@ -42,5 +42,9 @@ public class Sequence implements IStmt {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Sequence [stmts=" + stmts + "]";
+	}
 
 }

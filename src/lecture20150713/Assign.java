@@ -49,6 +49,10 @@ public class Assign implements IStmt {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Assign [var=" + var + ", exp=" + exp + "]";
+	}
 	
 
 }

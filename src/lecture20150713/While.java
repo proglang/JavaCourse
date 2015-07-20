@@ -50,5 +50,9 @@ public class While implements IStmt {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "While [condition=" + condition + ", body=" + body + "]";
+	}
 	
 }
